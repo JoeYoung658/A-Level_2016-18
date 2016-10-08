@@ -1,84 +1,53 @@
-""" Self-Driving Car: Following Distance
-    Name: 
-    Date: 
-    """
-
-# global constants
-
-VEHICLE_LENGTH = 4      # meters 
-MIN_DISTANCE = VEHICLE_LENGTH / 2
-
-# functions
-
-def get_equal_distance(dist_front, dist_rear):
-    """ Function to return target following distance, ensuring that the
-        vehicle in front and the vehicle behind are equidistant.
-        """
-    # your code goes here
-
-def get_safe_distance(curr_speed, weather):
-    """ Function to return safe following distance as per UK regulations,
-        e.g. the 2 second rule adapted to weather conditions.
-        """ 
-    # your code goes here
-
+#Joe Young #03/02/2016 #v1.0
+#http://www.theorytestadvice.co.uk/driving-test/marking/distance.htm
+def weather(conditions, distance_from_car):
+    if conditions == "dry":
+        return distance_from_car
+    elif conditions == "wet" or conditions == "foggy" or conditions == "other":
+        return distance_from_car*2
+    else:
+        print("Please input a vaild weather condition! (Wet, dry, foggy or other)")
+        return ("error")
+def distance_from_fcar(speed, cartype):
+    carl = 4.5
+    lorryl = 10
+    if cartype == "car":
+        if speed < 10:
+            return carl
+        else:
+            distance = (speed//10)*carl
+            return distance
+    elif cartype == "lorry":
+        if speed < 10:
+            return lorryl
+        else:
+            distance = (speed//10)*lorryl
+            return distance
+    else:
+        print("Please input a vaild car type! (Car or lorry)")
+        return ("error")   
+def equidistant(valuea, valueb):
+     me = str((valuea + valueb)/2)
+     return me
 def main():
-    """ Main function; contains various test cases for each scenario.
-        """
-    # ----------------------------------------------------------
-    # Scenario 1: Equal distance between front and rear vehicles
-    # ----------------------------------------------------------
-    
-    print("Scenario 1:")
-
-    # Test 1: (outputs 3.5)
-    distance_front = 2  # meters
-    distance_rear = 5   # meters
-
-    target_distance = get_equal_distance(distance_front, distance_rear)
-    print(target_distance)
-
-    # Test 2: (outputs 4.0)
-    distance_front = 5  # meters
-    distance_rear = 3   # meters
-
-    target_distance = get_equal_distance(distance_front, distance_rear)
-    print(target_distance)
-
-    # Test 3: (outputs 5.5)
-    distance_front = 1  # meters
-    distance_rear = 10  # meters
-
-    target_distance = get_equal_distance(distance_front, distance_rear)
-    print(target_distance)
-
-    # ----------------------------------------------------------
-    # Scenario 2: Safe following distances as per UK regulations
-    # ----------------------------------------------------------
-
-    print("Scenario 2:")
-
-    # Test 1: (outputs 2.0)
-    current_speed = 0  # mph
-    weather_condition = "normal"
-
-    target_distance = get_safe_distance(current_speed, weather_condition)
-    print(target_distance)
-
-    # Test 2: (outputs 24.0)
-    current_speed = 60  # mph
-    weather_condition = "normal"
-
-    target_distance = get_safe_distance(current_speed, weather_condition)
-    print(target_distance)
-
-    # Test 3: (outputs 48.0)
-    current_speed = 60  # mph
-    weather_condition = "poor"
-
-    target_distance = get_safe_distance(current_speed, weather_condition)
-    print(target_distance)    
-
-
+    print("- The average car lenth is 4.5m. \n- The average lorry lenth is 10m.\n")
+    cara = int(input("How far away is the car in frout in meters?"))
+    carb = int(input("How far away is the car behind in meters?"))
+    speed = int(input("What is your speed? (MPH)"))
+    while True:
+        cartype = str(input("What type of car is in frount of you? (Car or Lorry)")).lower()
+        distance_from_car = distance_from_fcar(speed, cartype)
+        if not(distance_from_car == "error"):
+            break
+    while True:
+        weatheri = str(input("What are the weather conditions? (Wet, dry, foggy or other)")).lower()
+        end_distance = weather(weatheri, distance_from_car)
+        if not(end_distance == "error"):
+            break
+    print("You should be "+ equidistant(cara, carb)+ "m away from the car in froutn and behind to be in the middle of both the cars")
+    if distance_from_car == end_distance:
+        print("You should be", end_distance, "away from the car in frount as you are travling", str(speed) +"MPH" )
+    else:
+        print("You should be", end_distance,  "away from the car in frount as you are travling", str(speed) + "MPH, as well as the bad weather conditions.")
 if __name__ == "__main__":
     main()
