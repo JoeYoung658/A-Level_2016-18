@@ -1,31 +1,16 @@
-""" Hangman Game (v1.0)
-    Name: Joe Young
-    Date: 24/09/2016
-    """
-
-#Joe Young
-#06/09/2016
+#Hangman Game (v2.0) Name: Joe Young Date: 24/09/2016 minimin about of lines
 import sys
-import platform
-if "windows" == platform.system():
-    sys.path.append(sys.path[0]+'\\Extra')
-else:
-    sys.path.append(sys.path[0]+'//Extra')
+sys.path.append(sys.path[0]+'\\Extra')
 from random import *
 from time import *
 import hangmanp
-def load_file(filename):#Opens file and returns a full list of words
+def random_word(filename): #Opens file, gets sets to word list and returns a random word
     file = open (filename) 
     word_list = file.readlines() 
-    file.close() 
-    return word_list 
-
-def select_word(): #gets single random word from list
-    word_list = load_file("wordlists.txt") 
+    file.close()
     single_word = (word_list[randint(0, len(word_list)-1)]) 
-    return single_word 
-
-def again():
+    return single_word
+def play_again():
     while 0 != 1:
         again = str(input("Would you like to play again?\n-")).lower()
         if again == "yes":
@@ -38,22 +23,23 @@ def again():
             break
         else:
             print("Please input a vaild method!\n")
-
 def main():
-    ran_word = select_word()
+    ran_word = random_word(sys.path[0]+'\\Extra\wordlists.txt')
     li = (len(ran_word)-1)
+    left = ["_" for i in range (li)]
     trys = 0
     guess = 0
     print(ran_word)
-    left = ["_" for i in range (li)]
     while 0 != 1:
-        print (left)
+        for place in left:
+            print(place, end=" ")
+        print ("\nThe Word has ", li, " letters! \nGuess = ", trys )
         letter = str(input("What is your guess?\n-")).lower()
         if ran_word.find(letter) == -1:
             print ("Your guess was incorrect\n")
             if guess != 11:
                 print (hangmanp.hangman(guess))
-                guess = guess + 1
+                guess += 1
         else:
             if not(len(letter) == 1):
                 print("Please only entre one letter at a time!\n")
@@ -67,26 +53,19 @@ def main():
                 if ran_word[i] == letter:
                     left[i] = letter
 
-            if not(("_") in left): #checks to see if user has won the game
-                print(left)
-                print("You have won the game!, it took you ", trys, " guesses!\n")
+            if not(("_") in left): 
+                for place in left:
+                    print(place, end=" ")
+                print("\nYou have won the game!, it took you ", trys, " guesses!\n")
                 sleep(3)
-                return again()
+                return play_again()
                 break
-        trys = trys + 1
+        trys += 1
         if not(guess != 11):
                 print("You have exceed your guesses!\n")
-                print("You have lost the game!, it took you ", trys, " to fail :(\n")
+                print("You have lost the game!, it took you ", trys, "trys to fail :(\n")
                 sleep(5)
-                return again()
+                return play_again()
                 break
-
-                
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
