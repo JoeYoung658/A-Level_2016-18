@@ -17,6 +17,30 @@ def update_RAM_instructions(key_to_find, instruction):
         if key == key_to_find:
             RAM[key] = definition
 
-sleep(50)
+def mnemonics_to_instruction(filename):
+    pass
 
+
+def instruction_register():
+    pass
+
+def addresses_register():
+    pass
+
+def accumulator():
+    pass
+
+def user_input():
+    pass
+
+def main():
+    pass
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+sleep(50)
 
