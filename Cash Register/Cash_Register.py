@@ -1,7 +1,6 @@
 """
 Joe Young
 Cash Register V.1
-https://github.com/sheabunge/GitPortable
 """
 
 dict_register = {  "£50" : 3,
