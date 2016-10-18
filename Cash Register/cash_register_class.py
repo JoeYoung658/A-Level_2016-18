@@ -28,7 +28,7 @@ register = [ [50, 3],
 change_due = 105.69 #This is the value that needs to be accumulated from coins and notes.
 
 def calc_change(change_due, register):
-""" Function to figure out the amount of coins. 
+    """ Function to figure out the amount of coins. 
     
     """ 
     for cash in range(len(register)): #A for loop to run the while loop for every coin/note in the register.
