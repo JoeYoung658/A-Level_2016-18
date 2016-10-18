@@ -4,8 +4,6 @@ V.1
 Little Man Computer
 
 """
-from time import sleep
-
 #Populates RAM dictonary with 99 addresses
 RAM = {}
 for i in range(100):
@@ -17,30 +15,38 @@ def update_RAM_instructions(key_to_find, instruction):
         if key == key_to_find:
             RAM[key] = definition
 
+
 def mnemonics_to_instruction(filename):
-    pass
-
-
-def instruction_register():
-    pass
-
-def addresses_register():
+    """Converts LDA etc into instruction, which can then be stored within the RAM
+    """
     pass
 
 def accumulator():
+    """Deals with the logical operations
+    """
+    
+    pass
+
+
+def program_counter():
+    """ Contains the address for the next instruction to be executed.
+    """
+    
+    pass
+
+def memory_unit():
+    """Deals with fetching/storing instructions from RAM
+    """
     pass
 
 def user_input():
+    """Deals with user_input.
+    """
     pass
 
 def main():
-    pass
+    """Deals User interface
+    """
 
 if __name__ == "__main__":
     main()
-
-
-
-
-sleep(50)
-
