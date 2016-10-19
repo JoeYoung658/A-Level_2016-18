@@ -1,6 +1,6 @@
 """
 Joe Young
-V.1
+V.2
 Little Man Computer
 
 """
@@ -17,49 +17,53 @@ def update_RAM_instructions(key_to_find, instruction):
         if key == key_to_find:
             RAM[key] = definition
 
-def mnemonics_to_instruction(filename):
-    """Converts LDA etc into instruction, which can then be stored within the RAM
+def mnemonics_file_read(filename):
+    """Reads the assembly file, places each mnemonic in a list.
     """
-    
-    
-    instruction_list = []
     mnemonic_list = []
     with open(filename, "r") as file:
         for line in file:
             for word in line.split():
-                mnemonic_list.append(word)   
+                mnemonic_list.append(word)
+    return mnemonic_list
+
+
+def mnemonics_to_instructions(mnemonic_list):
+    """Converts mnemonics into instructions to be put into ram
+    """
+    #Does not convert all mnemonics at this moment in time.
+    instruction_list = []
     while len(mnemonic_list) != 0:
         if "INP" == mnemonic_list[0]:
             instruction_list.append(901)
-            mnemonic_list.pop(0)        
+            mnemonic_list.pop(0)
+            
         elif "STA" == mnemonic_list[0]:
             mnemonic_list.pop(0)
-            RAM_adress = int(mnemonic_list[0]) 
-            if type(RAM_adress) == int:
-                instruction_list.append(int('3%d' % (RAM_adress)))  
-                mnemonic_list.pop(0)     
-            else:
+            try:
+                RAM_adress = int(mnemonic_list[0])
+                instruction_list.append(int('3%d' % (RAM_adress)))
+                mnemonic_list.pop(0)
+            except ValueError:
                 print("Error: Missing RAM address")
-                break
+                break   
         elif "ADD" == mnemonic_list[0]:
             mnemonic_list.pop(0)
-            RAM_adress = int(mnemonic_list[0])      
-            if type(RAM_adress) == int:
-                instruction_list.append(int('1%d' % (RAM_adress)))     
-                mnemonic_list.pop(0)           
-            else:
+            try:
+                RAM_adress = int(mnemonic_list[0])
+                instruction_list.append(int('1%d' % (RAM_adress)))
+                mnemonic_list.pop(0)
+            except ValueError:
                 print("Error: Missing RAM address")
                 break
         elif "OUT" == mnemonic_list[0]:
             instruction_list.append(902)
-            mnemonic_list.pop(0)  
+            mnemonic_list.pop(0)
         elif "HLT" == mnemonic_list[0]:
             instruction_list.append(000)
-            mnemonic_list.pop(0)  
+            mnemonic_list.pop(0)      
         else:
             print("No mnemonics found.")
-           
-    
     print(mnemonic_list)
     print(instruction_list)
     return instruction_list 
@@ -91,7 +95,8 @@ def user_input():
 def main():
     """Deals User interface
     """
-    instruction_list = mnemonics_to_instruction(sys.path[0]+'\\Extra\\Assembly.txt')
+    mnemonic_list = mnemonics_file_read(sys.path[0]+'\\Extra\\Assembly.txt')
+    instruction_list = mnemonics_to_instructions(mnemonic_list)
     #print(instruction_list)
 
 if __name__ == "__main__":
