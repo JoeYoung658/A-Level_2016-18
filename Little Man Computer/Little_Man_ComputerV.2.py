@@ -5,11 +5,11 @@ Little Man Computer
 
 """
 import sys
-import math
-#Populates RAM dictonary with 99 addresses
-RAM = {}
-for i in range(100):
-    RAM[i] = 0
+
+# #Populates RAM dictonary with 99 addresses
+# RAM = {}
+# for i in range(100):
+#     RAM[i] = 0
 
 #Checks RAM dictonary, then replaces with values given
 def update_RAM_instructions(key_to_find, instruction):
@@ -72,7 +72,7 @@ def mnemonics_to_instructions(mnemonic_list):
 def accumulator():
     """Deals with the logical operations
     """
-    
+
     pass
 
 
@@ -96,8 +96,8 @@ def main():
     """Deals User interface
     """
     mnemonic_list = mnemonics_file_read(sys.path[0]+'\\Extra\\Assembly.txt')
-    instruction_list = mnemonics_to_instructions(mnemonic_list)
-    #print(instruction_list)
+    RAM = mnemonics_to_instructions(mnemonic_list)
+    #print(RAM)
 
 if __name__ == "__main__":
     main()
