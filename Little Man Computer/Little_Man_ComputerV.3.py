@@ -4,7 +4,7 @@ V.2
 Little Man Computer
 
 - Bugs
-        - When user inputs nothing/wrong RAM adress, takes sees as zero
+        - When user inputs nothing/wrong RAM adress,, takes sees as zero
         - Add try/except onto inputs to avoid input Error
 """
 import sys
