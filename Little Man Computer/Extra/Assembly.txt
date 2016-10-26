@@ -1,6 +1,0 @@
-        INP
-        STA 98
-        INP
-        ADD 98
-        OUT
-        HLT
