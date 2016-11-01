@@ -1,6 +1,9 @@
         INP
         STA 98
         INP
+        STA 99
+        INP
         ADD 98
+        ADD 99
         OUT
         HLT

@@ -5,7 +5,8 @@ Little Man Computer
 
 - Bugs
         - When user inputs nothing/wrong RAM adress, takes sees as zero
-        - Add try/except onto inputs to avoid input Error
+        - Make sure to output each FDE Cycle
+       
 """
 import sys
 
@@ -77,23 +78,32 @@ def mnemonics_to_instructions(mnemonic_list):
     return instruction_list 
     
 
-def ALU(valuea, valueb, operator):
+def ALU(accumulator, value, operator):
     """Deals with the logical operations
     """
-    
     if operator == "+":
-        return valuea + valueb
+        print("+ values")
+        #return valuea + valueb
+        accumulator = accumulator + value
     elif operator == "-":
-        return valuea - valueb
+        print("- values")
+        #return valuea - valueb
+        accumulator = accumulator + value
     elif operator == "*":
-        return valuea * valueb
+        print("* values")
+        #return valuea * valueb
+        accumulator = accumulator + value
     elif operator == "/":
-        return valuea / valueb
+        print("/ values")
+        #return valuea / valueb
+        accumulator = accumulator + value
     else:
         return "Error"
+    return accumulator
 
 
 def control_unit(instructions):
+    accumulator = ""
     print(instructions)
     while (len(instructions)) != 0:
         if instructions[0] == "901":
@@ -101,16 +111,26 @@ def control_unit(instructions):
             user_input = float(input("Please input a number!"))
         elif instructions[0] == "3":
             instructions.pop(0)
+            print("Stores user input ("+ str(user_input) + ") to ram address" + instructions[0]+";")
             update_RAM_instructions(int(instructions[0]), user_input)
             instructions.pop(0)
         elif instructions[0] == "1":
             #add
             instructions.pop(0)
-            math = ALU(RAM[int(instructions[0])], user_input, "+")
+            if (accumulator == ""):
+                print (str(RAM[int(instructions[0])])+ "a")
+                math = ALU(RAM[int(instructions[0])], user_input, "+")
+                
+            else:
+                print (str(RAM[int(instructions[0])]) + "b")
+                math = ALU(RAM[int(instructions[0])], accumulator, "+")
+            accumulator = math
+            print (accumulator, "jnfdglkjfhnlkdjfhnlkjhnlkfjhn")
             instructions.pop(0)
         elif instructions[0] == "902":
             instructions.pop(0)
-            print(math)
+            print("Outputs result to user;")
+            print(accumulator)
         elif instructions[0] == "000":
             instructions.pop(0)
     return "Done"
