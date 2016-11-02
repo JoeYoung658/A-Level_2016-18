@@ -4,8 +4,8 @@ V.2
 Little Man Computer
 
 - Bugs
-        - When user inputs nothing/wrong RAM adress, takes sees as zero
-        - Make sure to output each FDE Cycle
+    - Fix Assembly reading
+    - Add branching
        
 """
 import sys
@@ -30,7 +30,7 @@ def mnemonics_file_read(filename):
     with open(filename, "r") as file:
         for line in file:
             for word in line.split():
-                mnemonic_list.append(word)
+                mnemonic_list.append(word.upper())
 ##                RAM[counter] = word
 ##                counter += 1 
                 
@@ -122,15 +122,11 @@ def ALU(accumulator, value, operator):
     elif operator == "-":
         print("Values have been taken away from each other")
         #return valuea - valueb
-        accumulator = accumulator + value
-    elif operator == "*":
-        print("Values have been times together")
-        #return valuea * valueb
-        accumulator = accumulator + value
+        accumulator = accumulator - value
     elif operator == "/":
         print("Values have been divided")
         #return valuea / valueb
-        accumulator = accumulator + value
+        accumulator = accumulator / value
     else:
         return "Error"
     return accumulator
@@ -189,7 +185,7 @@ def control_unit(RAM):
                 #print (str(RAM[int(instructions[0])]) + "b")
                 math = ALU(RAM[int(RAM[counter][1:])], accumulator, "-")
             accumulator = math
-            print ("The value in the accumulator is, " + str(accumulator))
+            print ("The value in the accumulator is, ", accumulator)
             #instructions.pop(0)
             counter += 1
             program_counter += 1
@@ -199,7 +195,7 @@ def control_unit(RAM):
             counter += 1
             program_counter += 1
             print("Program Counter =", program_counter)
-            print("The output is, " + str(accumulator))
+            print("The output is, ", accumulator)
         #print(RAM[counter][1:])
         #elif instructions[counter] == "000":
             #instructions.pop(0)
