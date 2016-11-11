@@ -28,6 +28,14 @@ def decrease_ascii(ascii_list, amount):
     return ascii_list
 
 
+import random
+passwd  = "Hello!!!!!!!!!!!!!!!!!!!!!!!"
+n = 1
+#ran = random.Random(passwd).sample(range(1000), n)
+ran = random.Random(passwd).randint(0, 1000)
+print(ran)
+
+print("--------------------------------")
 
 user_input = "Hello my name is Joe!"
 
@@ -35,13 +43,13 @@ ascii_list = convert_to_ascii(user_input)
 
 sentance  = convert_to_word(ascii_list)
 
-increased_ascii_list = increase_ascii([int(i) for i in ascii_list], 1)
+increased_ascii_list = increase_ascii([int(i) for i in ascii_list], ran)
 
 new_ascii_list = [str(i) for i in increased_ascii_list]
 
 increased_sentance  = convert_to_word(new_ascii_list)
 
-decrease_sentance = decrease_ascii(increased_ascii_list, 1)
+decrease_sentance = decrease_ascii(increased_ascii_list, ran)
 
 new_sentance = convert_to_word(decrease_sentance)
 
@@ -52,6 +60,9 @@ print(new_ascii_list)
 print(increased_sentance)
 print(decrease_sentance)
 print(new_sentance)
+
+
+
 
 
 
