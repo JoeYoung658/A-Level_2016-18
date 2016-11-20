@@ -18,8 +18,21 @@ def convert_to_word(ascii_list):
     return text
 
 def increase_ascii(ascii_list, amount):
+    # z is 122
+    # Z is 90
+    # a is 97
+    # A is 65
+    
     for i in range(len(ascii_list)):
-        ascii_list[i] += amount
+        if ascii_list[i] == 122:
+            ascii_list[i] = 97
+            ascii_list[i] += amount -1
+        elif ascii_list[i] == 90:
+            ascii_list[i] = 65
+            ascii_list[i] += amount -1
+        else:
+            ascii_list[i] += amount
+    
     return ascii_list
 
 def decrease_ascii(ascii_list, amount):
@@ -35,14 +48,16 @@ print(change_amount)
 print("--------------------------------")
 
 
-file_name = sys.path[0]+'\\Extra\Input.txt'
-with open(file_name) as myfile:
-    user_input="".join(line.rstrip() for line in myfile)
+# file_name = sys.path[0]+'\\Extra\Input.txt'
+# with open(file_name) as myfile:
+#     user_input="".join(line.rstrip() for line in myfile)
+
+user_input = "AaBbZzyY"
 
 print(user_input)
 
 ascii_list = convert_to_ascii(user_input)
-#print(ascii_list)
+print(ascii_list)
 
 Oringal_Sentace  = convert_to_word(ascii_list)
 #print(Oringal_Sentace)
