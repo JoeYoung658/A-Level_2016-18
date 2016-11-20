@@ -22,22 +22,29 @@ def increase_ascii(ascii_list, amount):
     # Z is 90
     # a is 97
     # A is 65
-    
-    for i in range(len(ascii_list)):
-        if ascii_list[i] == 122:
-            ascii_list[i] = 97
-            ascii_list[i] += amount -1
-        elif ascii_list[i] == 90:
-            ascii_list[i] = 65
-            ascii_list[i] += amount -1
-        else:
-            ascii_list[i] += amount
-    
+    for asci in range(len(ascii_list)):
+        for i in range(amount):
+            if ascii_list[asci] == 122:
+                ascii_list[asci] = 97
+                ascii_list[asci] += 1
+            elif ascii_list[asci] == 90:
+                ascii_list[asci] = 65
+                ascii_list[asci] += 1
+            else:
+                ascii_list[asci] += 1
     return ascii_list
 
 def decrease_ascii(ascii_list, amount):
-    for i in range(len(ascii_list)):
-        ascii_list[i] -= amount
+    for asci in range(len(ascii_list)):
+        for i in range(amount):
+            if ascii_list[asci] == 97:
+                ascii_list[asci] = 122
+                ascii_list[asci] -= 1
+            elif ascii_list[asci] == 65:
+                ascii_list[asci] = 90
+                ascii_list[asci] -= 1
+            else:
+                ascii_list[asci] -= 1
     return ascii_list
 
 
@@ -48,11 +55,11 @@ print(change_amount)
 print("--------------------------------")
 
 
-# file_name = sys.path[0]+'\\Extra\Input.txt'
-# with open(file_name) as myfile:
-#     user_input="".join(line.rstrip() for line in myfile)
+file_name = sys.path[0]+'\\Extra\Input.txt'
+with open(file_name) as myfile:
+    user_input="".join(line.rstrip() for line in myfile)
 
-user_input = "AaBbZzyY"
+# user_input = "AaBbZzyY"
 
 print(user_input)
 
@@ -60,20 +67,20 @@ ascii_list = convert_to_ascii(user_input)
 print(ascii_list)
 
 Oringal_Sentace  = convert_to_word(ascii_list)
-#print(Oringal_Sentace)
+print(Oringal_Sentace)
 
 increased_ascii_list = increase_ascii(ascii_list, change_amount)
-#print(increased_ascii_list)
+print(increased_ascii_list)
 
 cipher = convert_to_word(increased_ascii_list)
 print(cipher)
 
 
 decreased_ascii_list = decrease_ascii(increased_ascii_list, change_amount)
-#print(decreased_ascii_list)
+print(decreased_ascii_list)
 
 uncipher = convert_to_word(decreased_ascii_list)
-#print(uncipher)
+print(uncipher)
 
 
 file_name = sys.path[0]+'\\Extra\Output.txt'
