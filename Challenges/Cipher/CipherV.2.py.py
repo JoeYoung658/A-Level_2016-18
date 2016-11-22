@@ -1,11 +1,11 @@
 """
 Cipher
 Joe Young
-V.0
+V.2
 """
 
 import sys
-
+import random
 def convert_to_ascii(string):
     """
     Takes a string and turns each character into decimal ascii
@@ -40,6 +40,8 @@ def increase_ascii(ascii_list, amount):
             elif ascii_list[asci] == 90:
                 ascii_list[asci] = 65
                 ascii_list[asci] += 1
+            elif ascii_list[asci] == 32:
+                pass
             else:
                 ascii_list[asci] += 1
     return ascii_list
@@ -56,29 +58,38 @@ def decrease_ascii(ascii_list, amount):
             elif ascii_list[asci] == 65:
                 ascii_list[asci] = 90
                 ascii_list[asci] -= 1
+            elif ascii_list[asci] == 32:
+                pass
             else:
                 ascii_list[asci] -= 1
     return ascii_list
 
 def main():
-    file_name = sys.path[0]+'\\Extra\Data.txt'
+    file_name = sys.path[0]+'\\Extra\\Data.txt'
+
+##    file_name = "Data.txt"
     with open(file_name) as myfile:
         user_input="".join(line.rstrip() for line in myfile)
     loop = True
     while loop:
         try:
-            change_direction = int(input("Increase Cipher- 1 Decrease Cipher - 2\n>"))
-            change_amount = int(input("How much would you like to change the cipher?\n>"))
+            print("The data needs to be input within the Data.txt file.")
+            change_direction = int(input("Cipher- 1 Uncipher - 2\n>"))
+            passwd = str(input("What is your password?\n-"))
+            change_amount = random.Random(passwd).randint(0, 1000)
+            
             print("--------------------------------")
             if change_direction == 1:
                 ascii_list = convert_to_ascii(user_input)
                 increased_ascii_list = increase_ascii(ascii_list, change_amount)
                 cipher = convert_to_word(increased_ascii_list)
+                print("The Cipher is; ", cipher)
                 loop = False
             elif change_direction == 2:
                 ascii_list = convert_to_ascii(user_input)
                 decreased_ascii_list = decrease_ascii(ascii_list, change_amount)
                 cipher = convert_to_word(decreased_ascii_list)
+                print("The Uncipher is; ", cipher)
                 loop = False
             else:
                 print("Unexpected input, please try again!")
@@ -87,7 +98,8 @@ def main():
     open(file_name,"w").close()
     with open(file_name, 'w') as file_:
         file_.write(cipher)
-    print("Written to file!")
+    print("Written to Data.txt file!")
+    
     
 if __name__ == "__main__":
     main()
