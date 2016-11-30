@@ -1,9 +1,13 @@
-#V.1
 
 
-number = 20
-factors = []
-for i in range(1, number+1):
-    if number%i == 0:
-        factors.append(i)
-print(factors)
+
+number  = 5
+factorial = 1
+
+
+for i in range(2, number+1):
+    factorial = factorial * i
+
+
+
+print(factorial)
