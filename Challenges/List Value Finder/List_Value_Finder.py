@@ -35,19 +35,23 @@ def value_finder_r_multi(List):
             return (List[0] + value_finder_r_multi(List[1:]))
 
 
+def main():
+    lists = [10,10]
+    one = value_finder(lists)
+    print(one)
+    #----------------------------------------
+    lists = [10,10]
+    two = value_finder_r_single(lists)
+    print(two)
+    #----------------------------------------
+    lists = [10,10,[5,5]]
+    three = value_finder_multi(lists)
+    print(three)
+    #----------------------------------------
+    lists = [10,10,[5,5,[5,5,[5,5,[5,5,[5,5]]]]]]
+    four = value_finder_r_multi(lists)
+    print(four)
 
-lists = [10,10]
-one = value_finder(lists)
-print(one)
-#----------------------------------------
-lists = [10,10]
-two = value_finder_r_single(lists)
-print(two)
-#----------------------------------------
-lists = [10,10,[5,5]]
-three = value_finder_multi(lists)
-print(three)
-#----------------------------------------
-lists = [10,10,[5,5,[5,5,[5,5,[5,5,[5,5]]]]]]
-four = value_finder_r_multi(lists)
-print(four)
+
+if __name__ == "__main__":
+    main()
