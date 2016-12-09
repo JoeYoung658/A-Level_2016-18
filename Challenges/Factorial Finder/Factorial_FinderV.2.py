@@ -1,7 +1,16 @@
+import time
+
 def factorial_loop(number):
+    times = time.time()
+    print(times)
     factorial = 1
     for i in range(2, number+1):
         factorial = factorial * i
+
+    timess = time.time()
+
+    print(timess - times)
+    
     return factorial
 
 
