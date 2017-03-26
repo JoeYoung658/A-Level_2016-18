@@ -1,0 +1,12 @@
+
+
+
+
+function calculate_speed(distance, time_a, time_b) then
+    
+    diff = time_b - time_a
+    MPH = (distance/diff)
+    return MPH
+
+    
+end function
