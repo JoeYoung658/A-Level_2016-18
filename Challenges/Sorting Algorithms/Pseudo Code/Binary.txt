@@ -1,0 +1,21 @@
+binary_search(key, array, min, max)
+    if max < min then
+        return -1    
+    else then
+        mid_point = int((min + max) / 2) 
+
+    end if
+    
+    if array[mid_point] < key then
+        return binary_search(key, array, mid_point + 1, max)
+    else if array[mid_point] > key then
+        return binary_search(key, array, min, mid_point - 1)
+    else then
+        return mid_point
+    end if 
+
+    else:
+        print(case  + " not found")
+    end if
+end function
+

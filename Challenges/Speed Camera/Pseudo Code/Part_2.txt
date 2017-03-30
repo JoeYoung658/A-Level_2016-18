@@ -1,0 +1,13 @@
+def validate_number_plate(plate):
+    for i in range (6):
+        if (i == 2 or i == 3):
+            try:
+                validate = int(plate[i])
+            except ValueError:
+                return ("Error")
+        else:
+            try:
+                validate = str(plate[i])
+            except ValueError:
+                return ("Error")
+    return "Passed"

@@ -1,0 +1,9 @@
+linear_search(key, array, index)
+    if index == len(array) then
+        return -1
+    else if array[index] != key then
+        return linear_search(key, array, index + 1)
+    else:
+        return index 
+    end if
+end function	
