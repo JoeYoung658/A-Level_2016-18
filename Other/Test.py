@@ -1,8 +1,7 @@
+__author__ = 'JMYoung'
+from random import randrange
 
 
-number = 5
-
-letter = "H"
-
-
-print (letter, number, sep=" Fancy ")
+for listSize in range(1000,10001,1000):
+    alist = [randrange(10) for x in range (listSize)]
+    print(alist)
