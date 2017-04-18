@@ -1,0 +1,24 @@
+r_total = 0
+b_total = 0
+r_high_score = ["Name", 0]
+b_high_score = ["Name", 0]
+
+for i in player_name do
+	if player_score == 0 then
+		b_total += player_score[i][1]
+		if b_high_score[1] < player_score[i][1] then
+			b_high_score = [player_name[i], player_score[i][1]]
+	else then
+		r_total += player_score[i][1]
+		if r_high_score[1] < player_score[i][1] then
+			r_high_score = [player_name[i], player_score[i][1]]
+	endif
+	
+
+	
+
+		
+print ("BlueTeam" + int(b_total))
+print ("RedTeam" + int(r_total))
+print ("BlueTeam HighScore" + r_high_score[0])
+print ("RedTeam HighScore" + b_high_score[0])
