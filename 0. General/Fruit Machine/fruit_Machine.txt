@@ -1,0 +1,42 @@
+List symbols = ["Cherry","Bell","Lemon","Orange","Star","Skull"]
+
+
+String symbol1 = symbols[random int(0,length(symbols))]
+
+String symbol2 = symbols[random int(0,length(symbols))]
+
+String symbol3 = symbols[random int(0,length(symbols))]
+
+Float player_credit = 1.0
+
+Float cost_of_turn = 0.20
+
+while player_credit < 0 next
+
+	player_credit -= cost_of_turn
+	
+	if (symbol1 == symbol2 OR symbol1 == symbol3 OR symbol2 == symbol3) then
+		if (symbol1 == "Skull" AND symbol2 == "Skull") then
+			player_credit -= 1
+		else if (symbol1 == "Skull" AND symbol3 == "Skull") then
+			player_credit -= 1
+		else if (symbol2 == "Skull" AND symbol3 == "Skull") then
+			player_credit -= 1
+		else then
+			player_credit += 0.50
+		end if
+
+	else if (symbol1 == symbol2 == symbol3) then
+		if (symbol1 == "Bell") then
+			player_credit += 5
+
+		else if (symbol1 == "Skull") then
+			player_credit = 0
+		end if
+		
+	else then
+		player_option = input("Would you like to play again? (Y/N")
+		if (player_option == "N") then
+			break
+	end if
+end while

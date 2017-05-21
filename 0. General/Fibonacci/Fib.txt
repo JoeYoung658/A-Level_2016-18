@@ -1,0 +1,6 @@
+function Fibonacci(a,b)
+	new = a + b
+	b = a
+	a = new
+	return Fibonacci(a,b)
+end function
