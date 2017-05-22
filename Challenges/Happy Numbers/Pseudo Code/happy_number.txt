@@ -1,0 +1,15 @@
+Pseudo Code 
+
+
+functon happy_number(number)
+    number = list(number)
+    
+    total = 0
+
+    for i in number do
+        total = total + i**2
+
+    if total = 1 then
+        return true
+    else
+        return happy_number(total)
