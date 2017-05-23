@@ -7,7 +7,7 @@ Happy Number finder V.1
 
 def happy_number(number):
     
-   
+    
     total = 0
     
     #Spilt up the number into a list then squares each one by 2 adding it onto the total each tome
@@ -35,17 +35,16 @@ def main():
         820, 833, 836, 847, 860, 863, 874, 881, 888, 899, 901, 904, 907, 910, 912, 913, 921, 923, 931, 932, 937, 940, 946, 964, 970, 973, 989, 998,
         1000]
 
-    test_case2 = [2, 8, 11,20,24,35,834]
+    test_case2 = [2, 3, 4, 5, 6, 8, 9, 11, 12, 14, 15, 16, 17, 18, 20, 21, 22, 24, 25, 26, 27, 29, 30, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43,
+     45, 46, 47, 48, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 69, 71, 72, 73, 74, 75, 76, 77, 78, 80, 81, 83]
 
 
+    test_case3 = [i * 100 for i in test_case2]
 
+    for i in test_case3:
+        print(happy_number(i), i )
 
-    for i in test_case2:
-        if happy_number(i):
-            print(happy_number(i))
-        else:
-            print(happy_number(i))
-
+    
 
 if __name__ == "__main__":
     main()
