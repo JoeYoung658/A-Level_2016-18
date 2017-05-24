@@ -6,20 +6,14 @@ Happy Number finder V.1
 
 
 def happy_number(number):
-    
-    
-    total = 0
-    
-    #Spilt up the number into a list then squares each one by 2 adding it onto the total each tome
-    for i in [int(i) for i in str(number)]:
-        total += i**2
-
-    #Happy number if total equals 1
+    """
+    Total Spilt up the number into a list then squares each one by 2 adding it onto the total each time
+    Happy number if total is 1, unhappy if total is 4
+    """
+    total = sum(i**2 for i in [int(i) for i in str(number)])
     if (total == 1):
-        return True
-
-    #If total adds upto one of the numbers within this list, isn't a happy number    
-    elif total in [4, 16, 37, 58, 89, 145, 42, 20]:
+        return True    
+    elif total in [4,0]:
         return False
     else:
         return(happy_number(total))
@@ -39,7 +33,7 @@ def main():
      45, 46, 47, 48, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 69, 71, 72, 73, 74, 75, 76, 77, 78, 80, 81, 83]
 
 
-    test_case3 = [i * 100 for i in test_case2]
+    test_case3 = [i * 2 for i in test_case2]
 
     for i in test_case3:
         print(happy_number(i), i )
