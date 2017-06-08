@@ -10,7 +10,7 @@ def binary_search(key, array, min, max):
     else:
         mid_point = int((min + max) / 2) #Finds the mid point of the array.
     
-    if array[mid_point] < key: #Checks if the key is below the mid point.
+    if array[mid_point] < key: #Checks if the key is above the mid point.
         return binary_search(key, array, mid_point + 1, max) #Recursive, calls it self to look in the new range on the array then sends new values.
     elif array[mid_point] > key:
         return binary_search(key, array, min, mid_point - 1)#Does the same as above but the other away around.
