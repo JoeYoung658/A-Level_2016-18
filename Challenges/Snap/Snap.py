@@ -1,5 +1,10 @@
+import random
+import time
 
 
+"""
+ * Created by josep on 21/01/2017.
+ """
 
 class Card():
     def __init__(self, rank, suit):
@@ -40,10 +45,34 @@ class Deck():
     def returndeck(self):
         return self.cards
 
+def intro():
+    """Prints the instructions"""
+    print("----------------------------")
+    print("Press enter when you see a matching card")
+    print("Press enter when ready!")
+    print("----------------------------")
+    #input("")
 
-Deck_One = Deck_One.returndeck()
-
-Deck_Two = Deck_Two.returndeck()
 
 
 
+def main():
+    Deck_One = Deck().returndeck()
+    Deck_Two = Deck().returndeck()
+    
+    
+    game_not_over = True
+    
+    
+    while game_not_over:
+        random_1 = random.randrange(0,len(Deck_One))
+        random_2 = random.randrange(0,len(Deck_Two))
+        
+        if (Deck_One[random_1][1] == Deck_Two[random_2][1]):
+            print("Snap!")
+        else:
+            time.sleep(1)
+
+
+if __name__ == "__main__":
+    main()
