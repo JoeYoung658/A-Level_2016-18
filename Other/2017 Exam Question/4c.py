@@ -7,8 +7,7 @@ l = [[1,5,7,12],
 
 
 for j in range(len(l)):
-    total = 0
-    mean = 0 
+    total = 0 
     for i in range(len(l)):
        total += l[i][j]
     print(total/len(l))
