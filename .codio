@@ -1,0 +1,18 @@
+{
+    // Run button configuration
+    "commands" : {
+        "Run" : {
+            "id" : "t1",
+            "cmd" : "python3 \"{{filepath}}\""
+        }
+    },
+    // Debugger configuration
+    "debugger" : [{
+        "type" : "PYTHON3",
+        "command": "\"Code Challenges/01_mastermind.py\"",
+        "before" : "",
+        "uuid" : "1508fc4b-e88f-84e5-b817-872666d4550b",
+        "name" : "Challenge 01: Mastermind"
+    }],
+  "debugger": [{"type":"PYTHON3","command":"\"<PATH TO PYTHON FILE>\"","before":"","uuid":"1508fc4b-e88f-84e5-b817-872666d4550b","name":"Template"},{"type":"PYTHON3","command":"\"Exemplars/Programming Companion/objective_04.py\"","before":"","uuid":"48b616f2-df93-7ade-dc22-abd7825ef098","name":"Debug"},{"type":"PYTHON3","command":"\"Student Work/Connor Stockbridge/Programming Companion/objective_08.py\"","before":"","uuid":"cfe4d9ca-3d4e-e5b8-76af-570f6178eeab","name":"Test"}]
+}
